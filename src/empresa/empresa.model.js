@@ -12,7 +12,7 @@ const empresaSchema = Schema({
         required: true
     },
     trayectoria: {
-        type: Date,
+        type: Number,
         required: true
     },
     categoria: {

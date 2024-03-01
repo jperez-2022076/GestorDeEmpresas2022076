@@ -4,7 +4,7 @@ import cors from 'cors'
 import helmet from 'helmet'
 import morgan from 'morgan'
 import { config } from 'dotenv'
-
+import empresaRouter from '../src/empresa/empresa.routes.js'
 import categoriaRouter from '../src/categoria/categoria.routers.js'
 
 const app = Express()
@@ -18,6 +18,7 @@ app.use(helmet())
 app.use(morgan('dev'))
 
 app.use(categoriaRouter)
+app.use(empresaRouter)
 
 export const initServer = ()=>{
     app.listen(port)
