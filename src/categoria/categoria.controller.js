@@ -1,6 +1,7 @@
 'use strict'
 /* import publicacionesModelo from '../Publicacion/publicacion.model.js' */
 import categoriaModelo from './categorias.model.js'
+import empresaModel from '../empresa/empresa.model.js'
 
 
 export const agregarCategoria = async(req,res)=>{
@@ -44,7 +45,7 @@ export const actulizarCategoria = async(req,res)=>{
     }
 }
 
-/* export const eliminarCategoria = async (req, res) => {
+ export const eliminarCategoria = async (req, res) => {
     try {
         let { id } = req.params
         let eliminarCategoria = await categoriaModelo.findOneAndDelete({ _id: id })
@@ -58,8 +59,8 @@ export const actulizarCategoria = async(req,res)=>{
 }
 export const porDefecto = async (id, res) => {
     try {
-        let publicacion = await publicacionesModelo.find({ categoria: id })
-        if (!publicacion || publicacion.length === 0) return res.status(400).send({ message: 'Se elimino Exitosamente la categoria no tenia ninguna empresa agregado' })
+        let empresa = await empresaModel.find({ categoria: id })
+        if (!empresa || empresa.length === 0) return res.status(400).send({ message: 'Se elimino Exitosamente la categoria no tenia ninguna empresa agregado' })
         let categoriaPorDefecto = await categoriaModelo.findOne({ categoria: 'Por_Defecto' })
         if (!categoriaPorDefecto)return res.status(400).send({ message: 'No se encontró la categoría por Defecto' })
         await productoModelo.updateMany({ categoria: id }, { categoria: categoriaPorDefecto._id })
@@ -69,7 +70,7 @@ export const porDefecto = async (id, res) => {
         return res.status(500).send({ message: 'Error al realizar la operación por defecto' });
     }
 }
- */
+ 
 
 export const agregarPorDefecto = async()=>{
     try {

@@ -1,5 +1,6 @@
 'use strict'
 import { generarJwt } from '../utils/jwt.js'
+import { encriptar, verificarContraseña } from '../utils/validator.js'
 import usuarioModelo from './user.model.js'
 
 export const agregarUsuario = async(req,res)=>{
@@ -18,7 +19,7 @@ export const agregarUsuario = async(req,res)=>{
 export const login = async(req,res)=>{
     try {
         let {email,usuario,contraseña}= req.body
-        let user = await userModel.findOne({
+        let user = await usuarioModelo.findOne({
             $or:[
                 {usuario:usuario},
                 {email:email}

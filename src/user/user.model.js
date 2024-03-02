@@ -1,4 +1,5 @@
-import { Schema } from "mongoose"
+import { Schema, model } from "mongoose"
+
 
 const UserSchema = Schema({
     nombre:{
@@ -15,16 +16,17 @@ const UserSchema = Schema({
     },
     contraseña:{
         type:String,
-        minLength:[8,'Contraseña muy pequeña'],
-        required:true
+        minLenght:[8,'Contraseña muy pequeña'],
+        required: true
     },
     email:{
         type:String,
         required:true
     },
-    telefeno:{
+    telefono:{
         type: String,
         minLength :8,
         required:true
     }
 })
+export default model('usuario',UserSchema)
